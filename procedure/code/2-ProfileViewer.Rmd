@@ -83,7 +83,7 @@ LongProf %>%
   summarize(Slope = mean(Slope, na.rm = TRUE)) #This calculates the mean slope, based on the Attempt.
 
 # Now we want to figure out the width of the flood-prone area.
-DpthBf_Max <- 8 # Insert the maximum bankfull depth from your point/reach of interest here, replacing the 8 left of the hash #
+DpthBf_Max <- 1.4275 # Insert the maximum bankfull depth from your point/reach of interest here, replacing the 8 left of the hash #
 
 CrossProf[which.min(CrossProf$Elevation),] # This finds the minimum elevation, which should correspond to the lowest elevation in the stream channel, and reports the entire row. That part is essential! Double check the reported value with one of the plots you have made before to verify.
 StreamElev <- min(CrossProf$Elevation) # This stores the minimum elevation that you found in the previous step.
@@ -101,8 +101,8 @@ ggplot(CrossProf) +
        aes(x = Distance, y = Elevation, color = Elevation) +
        geom_point() + # Point chosen here to allow easier determining of the width (points are horizontally spaced by 1 meter)
        geom_hline(yintercept = MaxBFx2Elev) +
-       xlim(200,280) + # Sets the x-axis limits. Adjust this value as you zoom in to the correct area.
-       ylim(1102,1105) + # Sets the y-axis limits. Adjust this value as you zoom in to the correct area.
+       xlim(150,350) + # Sets the x-axis limits. Adjust this value as you zoom in to the correct area.
+       ylim(1440,1470) + # Sets the y-axis limits. Adjust this value as you zoom in to the correct area.
        scale_color_gradient(low = "green", high = "brown") +
        labs(x = "Distance along the transect (m)", y = "Elevation (masl)", title = "Determining the Flood-Prone Width")
 
